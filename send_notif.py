@@ -107,7 +107,9 @@ def main():
                 
                 # Save new entries to actual_data.csv and send notification
                 actual_data = pd.concat([actual_data, new_entries], ignore_index=True)
-                actual_data.to_csv("actual_data.csv", index=False)
+                # actual_data.to_csv("actual_data.csv", index=False)
+                with open("actual_data.csv", mode="w", newline="") as file:
+                    actual_data.to_csv(file, index=False)
                 send_telegram_message("New trading post available!")
                 print("New trading post detected and notification sent.")
             else:
